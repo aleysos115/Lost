@@ -15,7 +15,10 @@ typedef enum
     TOK_RBRACE,   	   /* } */
     TOK_LPAREN,   	   /* ( */
     TOK_RPAREN,   	   /* ) */
+    TOK_LBRACKET,   	   /* [ */
+    TOK_RBRACKET,   	   /* ] */
     TOK_SEMI,     	   /* ; */
+    TOK_COLON,		   /* : */
     TOK_COMMA,    	   /* , */
     TOK_DOT,      	   /* . */
     TOK_PLUS,     	   /* + */
@@ -24,7 +27,8 @@ typedef enum
     TOK_SLASH,    	   /* / */
     TOK_ASSIGN,   	   /* = */
     TOK_AMP,      	   /* & */
-    TOK_EXCLAM		   /* ! */
+    TOK_EXCLAM,		   /* ! */
+    TOK_HASH		   /* # */
 } token_kind;
 
 typedef struct 

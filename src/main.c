@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argv, char** argc)
+#include "token.h"
+#include "lexer.c"
+
+int main(int argc, char** argv)
 {
-    argv--;
-    argc++;
+    argc--;
+    argv++;
 
     //Run the gcc preprocessor on file into stream
     char cmd[512];
-    snprintf(cmd, sizeof(cmd), "gcc -E -xc %s", *argc);
+    snprintf(cmd, sizeof(cmd), "gcc -E -xc %s", *argv);
     FILE* pp = popen(cmd, "r");
     if(!pp)
     {
@@ -16,10 +19,13 @@ int main(int argv, char** argc)
 	return 1;
     }
 
+    token_list list;
+
     char buffer[256];
     while(fgets(buffer, sizeof(buffer), pp) != NULL)
     {
-	printf("%s", buffer);
+	//printf("%s", buffer);
+	lex(buffer, &list);
     }
 
     //Run lexer
